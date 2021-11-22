@@ -32,10 +32,10 @@ class ModelBuku extends CI_Model
     public function total($field, $where)
     {
         $this->db->select_sum($field);
-        if(!empety($where) && count($where) > 0){
+        if(!empty($where) && count($where) > 0){
             $this->db->where($where);
         }
-        $this->db->form('buku');
+        $this->db->from('buku');
         return $this->db->get()->row($field);
     }
 
@@ -55,9 +55,9 @@ class ModelBuku extends CI_Model
         $this->db->insert('kategori', $data);
     }
 
-    public function hapusKategorii($where = null)
+    public function hapusKategori($where = null)
     {
-        $this->db->delet('kategori', $where);
+        $this->db->delete('kategori', $where);
     }
 
     public function updateKategori($where = null, $data = null)
