@@ -2,7 +2,7 @@
 Tugas Individu Web Programming III
 ###################
 
-Assalamualaikum Perkenalkan nama saya Machfudin dari prodi Sistem Informasi S1 kelas 19.4A.37 BSI Pemuda.
+Assalamualaikum Perkenalkan nama saya Farhan Mulyawan dari prodi Sistem Informasi S1 kelas 19.4A.37 BSI Pemuda.
 
 ###################
 Account Login Admin Default
