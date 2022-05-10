@@ -1,7 +1,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
-    <?= $this->session->flashdata('pesan'); ?>
+    
     <div class="row">
         <div class="col-lg-12">
             <?php if(validation_errors()){?>
@@ -18,6 +18,7 @@
                         <th scope="col">Judul</th>
                         <th scope="col">Pengarang</th>
                         <th scope="col">Penerbit</th>
+                        <th scope="col">Kategori</th>
                         <th scope="col">Tahun Terbit</th>
                         <th scope="col">ISBN</th>
                         <th scope="col">Stok</th>
@@ -28,12 +29,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php $a = 1; foreach ($buku as $b) { ?>
+
+                    <?php
+                        $a = 1;
+                        foreach ($buku as $b) { ?>
                     <tr>
                         <th scope="row"><?= $a++; ?></th>
                         <td><?= $b['judul_buku']; ?></td>
                         <td><?= $b['pengarang']; ?></td>
                         <td><?= $b['penerbit']; ?></td>
+                        <td><?= $b['nama_kategori']; ?></td>
                         <td><?= $b['tahun_terbit']; ?></td>
                         <td><?= $b['isbn']; ?></td>
                         <td><?= $b['stok']; ?></td>
@@ -43,10 +48,11 @@
                             <picture>
                                 <source srcset="" type="image/svg+xml">
                                 <img src="<?= base_url('assets/img/upload/') . $b['image'];?>" class="img-fluid img-thumbnail" alt="...">
-                            </picture></td>
+                            </picture>
+                        </td>
                         <td>
                             <a href="<?= base_url('buku/ubahBuku/').$b['id'];?>" class="badge badge-info"><i class="fas fa-edit"></i> Ubah</a>
-                            <a href="<?= base_url('buku/hapusbuku/').$b['id'];?>" onclick="return confirm('Kamu yakin akan menghapus <?= $judul.' '.$b['judul_buku'];?> ?');" class="badge badge-danger"><i class="fas fa-trash"></i> Hapus</a>
+                            <a href="<?= base_url('buku/hapusbuku/').$b['id'];?>" onclick="return confirm('Kamu yakin akan menghapus <?= $judul.' '.$b['judul_buku'];?> ?');" class="badge badge-danger"><i class="fas fa-trash-alt"></i> Hapus</a>
                         </td>
                     </tr>
                     <?php } ?>
@@ -79,8 +85,9 @@
                     <div class="form-group">
                         <select name="id_kategori" class="form-control form-control-user">
                             <option value="">Pilih Kategori</option>
-                            <?php foreach ($kategori as $k) { ?>
-                                <option value="<?= $k['id'];?>"><?= $k['kategori'];?></option>
+                            <?php
+                            foreach ($kategori as $k) { ?>
+                                <option value="<?= $k['id_kategori'];?>"><?= $k['nama_kategori'];?></option>
                             <?php } ?>
                         </select>
                     </div>
@@ -93,7 +100,8 @@
                     <div class="form-group">
                         <select name="tahun" class="form-control form-control-user">
                             <option value="">Pilih Tahun</option>
-                            <?php for ($i=date('Y'); $i > 1000 ; $i--) { ?>
+                            <?php
+                            for ($i=date('Y'); $i > 1944 ; $i--) { ?>
                                 <option value="<?= $i;?>"><?= $i;?></option>
                             <?php } ?>
                         </select>
